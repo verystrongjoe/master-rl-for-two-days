@@ -9,6 +9,13 @@ lecture slides and source codes reinforcement learning for 2 days
     https://git-scm.com/downloads
   - 실습 레포지토리 클론
     https://github.com/verystrongjoe/master-rl-for-two-days
+    https://github.com/verystrongjoe/master-rl-for-two-days.git
+
+    pip install virtualenv
+    C:\>workspace\python>virtualenv ProjectEnv( here venv)
+    C:\>workspace\python>cd ProjectEnv\Scripts
+    C:\>workspace\python\ProjectEnv\Scripts>activate
+
   - pip install -r requirement.txt 실행
     https://www.tensorflow.org/install
   - 테스트 돌려보는 스크립트를 만들어볼수 있을려나...
