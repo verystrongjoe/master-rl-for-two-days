@@ -14,12 +14,18 @@ Experiment with three hyperparameters in the model:
 3. Optimizer
 """
 
+
+# 아래는 하이퍼파라메터 조합군을 만들기 위한 각 하이퍼파라메터들의 값후보들을 정의하는 부분
 HP_NUM_UNITS = hp.HParam('num_units', hp.Discrete([16, 32]))
 HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.2))
 HP_OPTIMIZER = hp.HParam('optimizer', hp.Discrete(['adam', 'sgd']))
 
 METRIC_ACCURACY = 'accuracy'
 
+"""
+아래는 텐서보드를 시각화하기 위한 로그 데이터를 만드는 폴더를 지정하는 부분입니다. 실제 폴더를 정의하고 그리고
+tensorboard.plugins.hparams.api.hparams_config()에  metric과 hparams에 대한 정보를 설정합니다.
+"""
 with tf.summary.create_file_writer('logs/hparam_tuning').as_default():
   hp.hparams_config(
     hparams=[HP_NUM_UNITS, HP_DROPOUT, HP_OPTIMIZER],
