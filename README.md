@@ -43,6 +43,6 @@ lecture slides and source codes reinforcement learning for 2 days
 ## Git issue
 아래와 같은 커맨드 날리면 git id/password를 두번 물어보는 일 제거 가능
 
-"""
+
 $ git config --system --unset credential.helper
-"""
+
