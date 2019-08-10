@@ -2,11 +2,14 @@ from scipy.stats import poisson
 import numpy as np
 
 
-class Poisson(object):
+# https://github.com/zy31415/jackscarrental
+class Possion(object):
+
     cache_pmf = {}
     cache_sf = {}
     cache = {}
     MAX_CUTOFF = 25
+    cache_enable = True
 
     @classmethod
     def pmf_series(cls, mu, cutoff):
@@ -22,15 +25,10 @@ class Poisson(object):
     def _calculate_pmf_series(cls, mu, cutoff):
 
         if mu not in cls.cache_pmf:
-            print("Calculate poisson ...")
-            cls.cache_pmf[mu] = poisson.pmf(np.arange(cls.MAX_CUTOFF + 1), mu)
-            cls.cache_sf[mu] = poisson.sf(np.arange(cls.MAX_CUTOFF + 1), mu)
+            cls.cache_pmf[mu] = poisson.pmf(np.arange(cls.MAX_CUTOFF +1), cutoff)
+            cls.cache_sf[mu] = poisson.sf(np.arange(cls.MAX_CUTOFF+1), cutoff)
 
-        out = np.copy(cls.cache_pmf[mu][:cutoff+1])
-        out[-1] += cls.cache_sf[mu][cutoff]  # 마지막 부분을 채우는 것인가? 1이 되게 하는 역할이라고 봐야하나?
+        out = np.copy(cls.cache_pmf[mu][:cls.MAX_CUTOFF+1])
+        out[-1] += cls.cache_sf[mu][cls.MAX_CUTOFF]
 
         cls.cache[(mu, cutoff)] = out
-
-
-if __name__ == '__main__':
-    pass
