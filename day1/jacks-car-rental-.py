@@ -29,13 +29,7 @@ import numpy as np
 
 # Suppose lambda is 3 and 4 for rental requests at the first and second locations and 3 and 2 for returns.
 def get_request_for_first():
-    return np.random.poisson(3, 1)[0]
-def get_reqeust_for_second():
-    return np.random.poisson(4, 1)[0]
-def get_return_for_first():
-    return np.random.poisson(3, 1)[0]
-def get_return_for_second():
-    return np.random.poisson(2, 1)[0]
+    return np.random.poisson(3, 10)[0]
 
 RENTAL_INCOME = 10
 MOVE_COST = 2
